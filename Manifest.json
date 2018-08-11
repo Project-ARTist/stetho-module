@@ -1,0 +1,8 @@
+{
+  "manifest_version": 1,
+  "package_name": "saarland.cispa.artist.module.stetho",
+  "name": "Stetho Module",
+  "description": "A module that injects Facebook's stetho library, a custom Android debug bridge that connects applications to the chrome developer tools on a connected PC to allow for investigating traffic, files and databases.",
+  "author": "Alexander Fink <alexander.fink@cispa.saarland>, Maximilian Jung <maxjung96@gmx.de>, Oliver Schranz <oliver.schranz@cipsa.saarland>",
+  "version": 1
+}
