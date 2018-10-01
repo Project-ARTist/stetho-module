@@ -49,7 +49,7 @@ shared_ptr<const CodeLib> TemplateModule::createCodeLib() const {
 
 unique_ptr<Filter> TemplateModule::getMethodFilter() const {
   // we are only interested in context objects, so we use this cheap heuristic for now
-  const vector<const string> ui = {"onCreate("};
+  const vector<const string> ui = {"onCreate(", "void okhttp3.OkHttpClient.<init>(okhttp3.OkHttpClient$Builder)", "com.squareup.okhttp.OkHttpClient.networkInterceptors"};
   return unique_ptr<Filter>(new MethodNameWhitelist(ui, false, true));
 }
 

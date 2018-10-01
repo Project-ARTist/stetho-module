@@ -24,6 +24,8 @@
 // METHODS //////////////////////////////////
 const string StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__INITSTETHO__L__V =
     "Lsaarland/cispa/artist/codelib/CodeLib;initStetho(Ljava/lang/Object;)V";
+const string StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP3INTERCEPTOR__L__V("Lsaarland/cispa/artist/codelib/CodeLib;okhttp3interceptor(Ljava/lang/Object;)V");
+const string StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP2INTERCEPTOR__L__V("Lsaarland/cispa/artist/codelib/CodeLib;okhttp2interceptor(Ljava/lang/Object;)V");
 
 // FIELDS ///////////////////////////////////
 const string StethoCodeLib::_F_CODECLASS_INSTANCE =
@@ -40,6 +42,8 @@ const string StethoCodeLib::_C_JAVA_LANG_STRING =
 unordered_set<string> &StethoCodeLib::getMethods() const {
     static unordered_set<string> methods({
     StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__INITSTETHO__L__V,
+    StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP3INTERCEPTOR__L__V,
+    StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP2INTERCEPTOR__L__V,
     });
     return methods;
 }

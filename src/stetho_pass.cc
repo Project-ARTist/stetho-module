@@ -42,32 +42,41 @@ using art::ArtUtils;
 using art::Primitive;
 
 void HStethoArtist::RunPass() {
-  const auto eblock = graph_->GetEntryBlock();
-  if (eblock != nullptr) {
-    const auto block = eblock->GetSingleSuccessor();
-    if (block != nullptr) {
-      if (!_method_info.GetParams().empty()) {
-        HParameterValue *this_instruction = _method_info.GetParams()[0];
-        if (_method_info.IsThisParameter(this_instruction)) {
-          auto cursor = block->GetFirstInstruction();
-          auto invoked_signature = StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__INITSTETHO__L__V;
-          auto codelib_instruction = GetCodeLibInstruction();
-          vector<art::HInstruction *> params;
-          params.push_back(codelib_instruction);
-          params.push_back(this_instruction);
-          ArtUtils::InjectMethodCall(cursor, invoked_signature, params, this->getCodeLibEnvironment(),
-                                     Primitive::Type::kPrimVoid, true);
+    const auto eblock = graph_->GetEntryBlock();
+    if (eblock != nullptr) {
+      const auto block = eblock->GetSingleSuccessor();
+      if (block != nullptr) {
+        if (!_method_info.GetParams().empty()) {
+          HParameterValue *this_instruction = _method_info.GetParams()[0];
+          if (_method_info.IsThisParameter(this_instruction)) {
+            auto cursor = block->GetFirstInstruction();
+            string invoked_signature;
+            auto codelib_instruction = GetCodeLibInstruction();
+            vector<art::HInstruction *> params;
+            params.push_back(codelib_instruction);
+            if (_method_info.GetMethodName(true).find("networkInterceptors(") != string::npos) {
+              invoked_signature = StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP2INTERCEPTOR__L__V;
+              params.push_back(this_instruction);
+            } else if (_method_info.GetMethodName(true).find("onCreate(") == string::npos) {
+              invoked_signature = StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP3INTERCEPTOR__L__V;
+              params.push_back(_method_info.GetParams()[1]);
+            } else {
+              invoked_signature = StethoCodeLib::_M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__INITSTETHO__L__V;
+              params.push_back(this_instruction);
+            }
+            ArtUtils::InjectMethodCall(cursor, invoked_signature, params, this->getCodeLibEnvironment(),
+                                       Primitive::Type::kPrimVoid, true);
+          } else {
+            // 1st parameter is not this
+          }
         } else {
-          // 1st parameter is not this
+          // no params
         }
       } else {
-        // no params
+        // no second block
       }
     } else {
-      // no second block
+      // no entry block
     }
-  } else {
-    // no entry block
-  }
 
 }
