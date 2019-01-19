@@ -39,7 +39,8 @@ TemplateModule::TemplateModule(const shared_ptr<const art::FilesystemHelper> fs)
 HArtist * TemplateModule::createPass(const MethodInfo &method_info) const {
   // Due to the *clone bug* (https://github.com/Project-ARTist/ARTist/issues/10), we can only define one pass per
   // module right now, but this will change as soon as this bug is resolved.
-  return new (method_info.GetGraph()->GetArena()) HStethoArtist(method_info);
+//  return new (method_info.GetGraph()->GetArena()) HStethoArtist(method_info);
+  return new HStethoArtist(method_info);
 }
 
 shared_ptr<const CodeLib> TemplateModule::createCodeLib() const {
