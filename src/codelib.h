@@ -34,6 +34,8 @@ class StethoCodeLib : public CodeLib {
     public:
     // METHODS //////////////////////////////////
     static const string _M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__INITSTETHO__L__V;
+    static const string _M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP3INTERCEPTOR__L__V;
+    static const string _M_SAARLAND_CISPA_ARTIST_CODELIB_CODELIB__OKHTTP2INTERCEPTOR__L__V;
     // FIELDS ///////////////////////////////////
     static const string _F_CODECLASS_INSTANCE;
     // CLASSES //////////////////////////////////
